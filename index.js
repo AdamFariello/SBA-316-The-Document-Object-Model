@@ -1,3 +1,27 @@
+const chessImgDir = "./images/chess/"
+let chessPieces = [
+    {name:"bishop",src: chessImgDir + "bishop.png"},
+    {name:"king",src: chessImgDir + "king.png"},
+    {name:"knight",src: chessImgDir + "knight.png"},
+    {name:"pawn",src: chessImgDir + "pawn.png"},
+    {name:"queen",src: chessImgDir + "queen.png"},
+    {name:"rook",src: chessImgDir + "rook.png"},
+    
+]
+
+function generateRandomPiece() { 
+    let clone = JSON.parse(JSON.stringify(chessPieces));
+    
+    while (clone.length > 3) {
+        const index = Math.floor(Math.random() * clone.length)
+        const toRemove = chessPieces[index].name
+        clone = clone.filter(function(e) {
+            return e.name != toRemove
+        })
+    }
+
+    return clone
+}
 
 let topImg = document.getElementById("topImg")
 function updateOpacity () {
@@ -7,3 +31,5 @@ function updateOpacity () {
     console.log(opacity)
     topImg.style.opacity = opacity - 0.25
 }
+
+generateRandomPiece()
