@@ -1,0 +1,17 @@
+:root {
+    --preImage:url("./images/joelouisjun2009.webp");
+    --postImage:url("./images/joelouis2021.webp")
+}
+
+body {
+    /*background-image: var(--preImage);*/ 
+    background: linear-gradient(rgba(255, 255, 255, 0), 
+                rgba(255, 255, 255, 0)), 
+                var(--preImage), 
+                linear-gradient(rgba(255, 255, 255, 0), 
+                rgba(255, 255, 255, 0)), 
+                var(--postImage);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity:0.5;
+}
