@@ -1,3 +1,28 @@
+.hbox {
+    width: auto;
+    height: auto;
+    display:flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#gameScreen {
+    background-color: aqua;
+    height:250px;
+    width: 400px;
+    display:flex;
+    flex-wrap: wrap;
+    padding: 1px;
+}
+
+.gameSquare {
+    height:50px;
+    width:50px;
+}
+
 #piecesList {
     width: 60px;
     height: fit-content;
@@ -15,5 +40,5 @@
 
 .chessPieceImg {
     width:50px;
-    height:auto;
+    height:50px;
 }
