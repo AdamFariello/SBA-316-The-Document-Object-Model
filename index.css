@@ -1,36 +1,11 @@
-:root {
-    --preImage:url("./images/joelouisjun2009.webp");
-    --postImage:url("./images/joelouis2021.webp")
+#piecesList {
+    width: 200px;
+    height: fit-content;
+    background-color: white;
 }
 
-/*
-body {
-    background: linear-gradient(rgba(255, 255, 255, 0), 
-                rgba(255, 255, 255, 0)), 
-                var(--preImage), 
-                linear-gradient(rgba(255, 255, 255, 0), 
-                rgba(255, 255, 255, 0)), 
-                var(--postImage);
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity:0.5;
-}
-*/
-
-.inner {
-    position:absolute;
-    background-size: cover;
-    width: 100%;
-    height:100%;
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    bottom: 0; 
-}
-#topImg { 
-    background-image: var(--preImage);
-    opacity: 1.0; 
-}
-#btmImg {
-    background-image: var(--postImage);
+#piece1 {
+    background: url("./images/chess/rook.png");
+    width:150px;
+    height:30px;
 }

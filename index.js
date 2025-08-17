@@ -32,4 +32,9 @@ function updateOpacity () {
     topImg.style.opacity = opacity - 0.25
 }
 
-generateRandomPiece()
+function generateChessPieces() {
+    let pieces = generateRandomPiece()
+    for (piece of pieces) {
+        const pieceDiv = document.createElement("div")
+    }
+}
