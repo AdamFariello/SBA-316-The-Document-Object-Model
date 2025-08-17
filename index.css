@@ -21,6 +21,7 @@
 .gameSquare {
     height:auto;
     width:auto;
+    flex-grow: 1;
 }
 
 .gameRow {

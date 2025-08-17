@@ -42,7 +42,20 @@ function selectChessPiece() {
 }
 
 
-function scrollThroughBoard() {
-    let gameRows = gameBoardDiv
-    
+function createGameSquare() {
+
 }
+
+function scrollThroughBoard() {
+    //TODO: figure out how to prevent it from running early
+    let gameRows = gameBoardDiv.getElementsByClassName("gameRow")
+    for (gameRow of gameRows) {
+        let gameSquares = gameRow.getElementsByClassName("gameSquare")
+        for (gameSquare of gameSquares) {
+            console.log(gameSquare)
+        }
+    }
+    console.log(gameRows[0].childNodes)
+
+}
+//scrollThroughBoard()
