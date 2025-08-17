@@ -9,6 +9,8 @@ let chessPieces = [
     
 ]
 
+let gameBoardDiv = document.getElementById("gameScreen")
+
 function generateRandomPiece() { 
     let clone = JSON.parse(JSON.stringify(chessPieces));
     
@@ -32,9 +34,15 @@ function updateOpacity () {
     topImg.style.opacity = opacity - 0.25
 }
 
-function generateChessPieces() {
+function selectChessPiece() {
     let pieces = generateRandomPiece()
     for (piece of pieces) {
         const pieceDiv = document.createElement("div")
     }
+}
+
+
+function scrollThroughBoard() {
+    let gameRows = gameBoardDiv
+    
 }
