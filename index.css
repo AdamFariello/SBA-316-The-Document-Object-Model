@@ -11,27 +11,36 @@
 
 #gameScreen {
     background-color: aqua;
-    height:250px;
-    width: 400px;
+    height:fit-content;
+    width: 475px;
     display:flex;
-    flex-wrap: wrap;
-    padding: 1px;
+    flex-flow: column;
+    padding: 2px;
 }
 
 .gameSquare {
-    height:50px;
-    width:50px;
+    height:auto;
+    width:auto;
+}
+
+.gameRow {
+    width:100%;
+    height:fit-content;
+    margin-top:2px;
+    margin-bottom:2px;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 #piecesList {
-    width: 60px;
+    width: fit-content;
     height: fit-content;
     background-color: white;
 }
 
 .chessPieceDiv {
     width:auto;
-    height: 50px;
+    height: auto;
     display:flex;
     justify-content: center;
     padding-top: 5px;
@@ -39,6 +48,6 @@
 }
 
 .chessPieceImg {
-    width:50px;
-    height:50px;
+    width:75px;
+    height:75px;
 }
