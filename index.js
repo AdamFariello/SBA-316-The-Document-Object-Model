@@ -9,6 +9,7 @@ let chessPieces = [
     
 ]
 
+
 let gameBoardDiv = document.getElementById("gameScreen")
 
 function generateRandomPiece() { 
@@ -43,19 +44,29 @@ function selectChessPiece() {
 
 
 function createGameSquare() {
-
+    //TODO: figure if to hard code "gameSquare"
+    let gameSquare = document.createElement("div")
+    gameSquare.setAttribute("class", "gameSquare")
+    return gameSquare
 }
 
-function scrollThroughBoard() {
+//function scrollThroughBoard() {
+function initializeBoard() {
     //TODO: figure out how to prevent it from running early
     let gameRows = gameBoardDiv.getElementsByClassName("gameRow")
     for (gameRow of gameRows) {
-        let gameSquares = gameRow.getElementsByClassName("gameSquare")
-        for (gameSquare of gameSquares) {
-            console.log(gameSquare)
+        let gameSquareArr = gameRow.getElementsByClassName("gameSquare")
+        console.log(gameSquareArr)
+        console.log(gameSquareArr.length)
+        
+        if (gameSquareArr.length < 6) {
+            let gameSquare = createGameSquare()
+            while (gameSquareArr.length < 5) {
+                let clone = gameSquare.cloneNode(false) //false = no children
+                gameRow.appendChild(clone)
+            }
+            gameRow.appendChild(gameSquare)
         }
     }
-    console.log(gameRows[0].childNodes)
-
 }
-//scrollThroughBoard()
+initializeBoard()
