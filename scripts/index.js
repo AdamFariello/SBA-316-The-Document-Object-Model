@@ -12,20 +12,32 @@ let chessPieces = [
 let gameBoardDiv = document.getElementById("gameScreen")
 
 function generateChessElement(chessPiece) {
-    let element = document.createElement("img")
+    let img = document.createElement("img")
     img.setAttribute("src", chessPiece.src)
     img.setAttribute("class", "chessPieceImg")
-    return element
+    return img
+}
+
+function randomChessArrNum() {
+    return Math.floor(Math.random() * chessPieces.length)
 }
 
 let chessPiecesUsed = []
 function generateFirst3pieces() {
-    let anonf = () => {
-        return Math.floor(Math.random() * chessPieces.length)
-    }
-    const piece = chessPieces[anonf()] 
+     let piecesList = document.getElementById("piecesList")
+     let chessPieceDivs = piecesList.querySelectorAll("div")
+     for (chessPieceDiv of chessPieceDivs) {
+        let chessPieceNum = null
+        do {
+            chessPieceNum = randomChessArrNum()
+        } while(chessPiecesUsed.includes(chessPieceNum))
+        chessPiecesUsed.push(chessPieceNum)
+        chessPieceDiv.appendChild(
+            generateChessElement(chessPieces[chessPieceNum])
+        )
+     }
 }
-//generateFirst3pieces()
+generateFirst3pieces()
 
 
 
@@ -111,6 +123,4 @@ gameScreen.addEventListener("click", e => {
     selectedPiece.style.height = "60px"
     e.target.appendChild(selectedPiece)
     selectedPiece = null
-
-
 })
