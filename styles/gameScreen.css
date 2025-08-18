@@ -30,6 +30,10 @@
     
 }
 
+hr {
+    margin:0;
+}
+
 .gameRow {
     width:100%;
     height:fit-content;
