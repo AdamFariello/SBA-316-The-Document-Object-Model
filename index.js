@@ -51,7 +51,7 @@ function createGameSquare() {
 }
 
 //function scrollThroughBoard() {
-function initializeBoard() {
+function initializeBoard() { 
     //TODO: figure out how to prevent it from running early
     let gameRows = gameBoardDiv.getElementsByClassName("gameRow")
     for (gameRow of gameRows) {
@@ -70,3 +70,4 @@ function initializeBoard() {
     }
 }
 initializeBoard()
+console.log("infinite loop?")
