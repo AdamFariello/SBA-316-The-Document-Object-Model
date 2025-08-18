@@ -121,13 +121,16 @@ piecesList.addEventListener("click", e => {
 })
 
 
-gameScreen.addEventListener("click", e => {
+gameScreen.addEventListener("click", e => {    
     //TODO: make this easier to read
     if (e.target.id == "gameScreen" || e.target.classList[0] == "gameRow" || 
         e.target.tagName == "IMG" || selectedPiece == null ||
         e.target.tagName == "HR" || e.target.tagName == "undefined") { 
         return
     }
+
+    const row = parseInt(e.target.parentNode.id[3])
+    if (row < 4) return
 
     selectedPiece.style.width = "60px"
     selectedPiece.style.height = "60px"
