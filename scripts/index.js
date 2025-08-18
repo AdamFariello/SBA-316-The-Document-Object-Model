@@ -20,6 +20,15 @@ let chessPieces = [
 let chessPiecesUsed = []
 
 
+//TODO: figure out how to just san the images in file instead 
+const carsImgDir = "/images/cars/"
+let cars = [
+    carsImgDir + "boat.png",
+    carsImgDir + "car.png", 
+    carsImgDir + "helicopter.png",
+    carsImgDir + "jeep.png",
+    carsImgDir + "tank.png"
+]
 
 
 let gameBoardDiv = document.getElementById("gameScreen")
@@ -129,6 +138,7 @@ gameScreen.addEventListener("click", e => {
         return
     }
 
+    //TODO?: swap out hard coded numbers
     const row = parseInt(e.target.parentNode.id[3])
     if (row < 4) return
 
@@ -164,3 +174,15 @@ gameScreen.addEventListener("click", e => {
         generateChessElement(chessPieces[chessPieceNum])
     )
 })
+
+
+function generateEnemy() {
+    const randomNum = Math.floor(Math.random() * cars.length)
+
+    let img = document.createElement("img")
+    img.setAttribute("src", cars[randomNum])
+    img.setAttribute("class", "chessPieceImg")
+    img.setAttribute("name", "enemy")
+    return img
+}
+generateEnemy()
