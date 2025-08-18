@@ -2,17 +2,6 @@
     --gamePieceDim:75px;
 }
 
-.hbox {
-    width: auto;
-    height: auto;
-    display:flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding-top: 5%;
-    padding-bottom: 5%;
-}
-
 #gameScreen {
     background-color: aqua;
     height:fit-content;
@@ -28,12 +17,6 @@
     flex-grow: 1;
     width:75px;
     height:75px;
-
-    /*
-    border-color: black;
-    border-width: 1px;
-    background-color: beige;
-    */
 }
 
 .gameRow {
