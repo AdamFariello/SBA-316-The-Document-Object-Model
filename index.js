@@ -9,7 +9,6 @@ let chessPieces = [
     
 ]
 
-
 let gameBoardDiv = document.getElementById("gameScreen")
 
 function generateRandomPiece() { 
@@ -42,7 +41,6 @@ function selectChessPiece() {
     }
 }
 
-
 function createGameSquare() {
     //TODO: figure if to hard code "gameSquare"
     let gameSquare = document.createElement("div")
@@ -56,8 +54,6 @@ function initializeBoard() {
     let gameRows = gameBoardDiv.getElementsByClassName("gameRow")
     for (gameRow of gameRows) {
         let gameSquareArr = gameRow.getElementsByClassName("gameSquare")
-        console.log(gameSquareArr)
-        console.log(gameSquareArr.length)
         
         if (gameSquareArr.length < 6) {
             let gameSquare = createGameSquare()
@@ -70,4 +66,14 @@ function initializeBoard() {
     }
 }
 initializeBoard()
-console.log("infinite loop?")
+
+
+function invertImage() {
+
+}
+
+const piecesList = document.getElementById("piecesList")
+piecesList.addEventListener("click", e => {
+    console.log(e.target)
+    e.target.setAttribute("style", "border:var(--gamePieceBorder)")
+})

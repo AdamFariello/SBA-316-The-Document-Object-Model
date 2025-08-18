@@ -1,5 +1,6 @@
 :root {
     --gamePieceDim:75px;
+    --gamePieceBorder: 2px solid #fbec5d; 
 }
 
 #gameScreen {
@@ -30,16 +31,18 @@
 
 #piecesList {
     /*NOTE: might wanna switch to using one, or neither */
-    width: var(--gamePieceDim);
+    width: 80px;
     height: fit-content;
-    background-color: white;
+    background-color: beige;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .chessPieceDiv {
     width: var(--gamePieceDim);
     height: var(--gamePieceDim);
-    display:flex;
-    justify-content: center;
     padding-top: 5px;
     padding-bottom: 5px;
 }
