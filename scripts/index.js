@@ -176,13 +176,21 @@ gameScreen.addEventListener("click", e => {
 })
 
 
-function generateEnemy() {
+function generateEnemyElement() {
     const randomNum = Math.floor(Math.random() * cars.length)
 
     let img = document.createElement("img")
     img.setAttribute("src", cars[randomNum])
     img.setAttribute("class", "chessPieceImg")
     img.setAttribute("name", "enemy")
+
     return img
+}
+function generateEnemy() {
+    let row1 = document.getElementById("row1")
+    let testSquare = row1.childNodes[0]
+    //testSquare.innerText = "example"
+    //console.log(testSquare)
+    testSquare.appendChild(generateEnemyElement())
 }
 generateEnemy()
