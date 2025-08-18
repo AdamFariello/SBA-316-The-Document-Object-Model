@@ -197,41 +197,6 @@ function generateEnemy() {
 generateEnemy()
 
 
-function generateCssAnimation(startEl, endEl) {
-    console.log("before")
-    console.log(startEl.offsetTop)
-    console.log(startEl.offsetLeft)
-
-    console.log("after")
-    console.log(endEl.offsetTop)
-    console.log(endEl.offsetLeft)
-
-    const startElPos = startEl.getBoundingClientRect() 
-    const endElPos   = endEl.getBoundingClientRect() 
-    console.log(startElPos.left)
-    /*
-    0%   {left:${startEl.offsetLeft}px; top:${startEl.offsetTop}px;}
-    100% {left:${endEl.offsetLeft}px; top:${endEl.offsetTop}px;}
-    */
-
-    let style = document.createElement("style")
-    style.innerHTML = `
-    .enemyAnimation {
-        animation-name: moveDownAnimation;
-        animation-duration: 3s;
-        position:relative;
-    }
-    @keyframes moveDownAnimation {
-        0%   {left:0px; top:0px;}
-        100% {left:0px; top:80px;}
-    }
-    `
-    style.innerhtml = "test"
-    console.log(style)
-    return style
-}
-
-
 function moveEnemyDown() {
     //TODO: replace uneeded lets with const
     let enemies = document.querySelectorAll("img[name='enemy']")
@@ -244,9 +209,6 @@ function moveEnemyDown() {
         
         if (newRow != null) {
             let div = newRow.childNodes[0]
-
-            document.getElementsByTagName("head")[0]
-                    .appendChild(generateCssAnimation(enemy, div))
             enemy.classList.add("enemyAnimation")
             //div.appendChild(enemy)
         } else {
