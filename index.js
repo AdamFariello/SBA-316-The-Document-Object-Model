@@ -68,13 +68,10 @@ function initializeBoard() {
 initializeBoard()
 
 
-function invertImage() {
-
-}
-
 const piecesList = document.getElementById("piecesList")
 let selectedPiece = null
 piecesList.addEventListener("click", e => {
+    //TODO: figure out if swapping div with img is good idea
     let images = piecesList.querySelectorAll("img")
     for (image of images) {
         if (image == e.target) {
@@ -91,4 +88,16 @@ piecesList.addEventListener("click", e => {
             image.removeAttribute("style")
         }
     }
+})
+
+
+gameScreen.addEventListener("click", e => {
+    if (e.target.id == "gameScreen" || selectedPiece == null) { 
+        return
+    }
+
+    selectedPiece.style.width = "60px"
+    selectedPiece.style.height = "60px"
+    e.target.appendChild(selectedPiece)
+    selectedPiece = null
 })

@@ -18,6 +18,16 @@
     flex-grow: 1;
     width:75px;
     height:75px;
+    
+    display: flex;
+    justify-content: center;
+    top:50%;
+
+    /*TODO: figure if this should be modified*/
+    background-color: #fbec5d;
+    margin-left: 1px;
+    margin-right:1px;
+    
 }
 
 .gameRow {
@@ -33,7 +43,7 @@
     /*NOTE: might wanna switch to using one, or neither */
     width: 80px;
     height: fit-content;
-    background-color: beige;
+    background-color: rgb(14, 195, 108);
 
     display:flex;
     flex-direction: column;
@@ -50,4 +60,5 @@
 .chessPieceImg {
     width:var(--gamePieceDim);
     height:var(--gamePieceDim);
+    margin-top: 5%; /*TODO: figure if reasonable to keep*/
 }
