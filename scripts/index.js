@@ -210,9 +210,16 @@ function moveEnemyDown() {
         if (newRow != null) {
             let div = newRow.childNodes[0]
             enemy.classList.add("enemyAnimation")
-            //div.appendChild(enemy)
+            
+            //duration shorter to avoid animation ending early
+            var animationDuration = 3000; 
+            setTimeout(e => {
+                enemy.classList.remove("enemyAnimation")
+                div.appendChild(enemy)
+            }, animationDuration);
         } else {
             //TODO: THIS IS WHERE YOU TAKE DAMAGE
+            document.removeChild(enemy)
         }        
     }
 }
