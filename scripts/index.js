@@ -1,4 +1,5 @@
 const chessImgDir = "/images/chess/"
+/*
 let chessPieces = [
     {name:"bishop",src: chessImgDir + "bishop.png"},
     {name:"king",src: chessImgDir + "king.png"},
@@ -6,14 +7,26 @@ let chessPieces = [
     {name:"pawn",src: chessImgDir + "pawn.png"},
     {name:"queen",src: chessImgDir + "queen.png"},
     {name:"rook",src: chessImgDir + "rook.png"},
-    
 ]
+*/
+let chessPieces = [
+    chessImgDir + "bishop.png",
+    chessImgDir + "king.png",
+    chessImgDir + "knight.png",
+    chessImgDir + "pawn.png",
+    chessImgDir + "queen.png",
+    chessImgDir + "rook.png",
+]
+let chessPiecesUsed = []
+
+
+
 
 let gameBoardDiv = document.getElementById("gameScreen")
 
 function generateChessElement(chessPiece) {
     let img = document.createElement("img")
-    img.setAttribute("src", chessPiece.src)
+    img.setAttribute("src", chessPiece)
     img.setAttribute("class", "chessPieceImg")
     return img
 }
@@ -22,7 +35,6 @@ function randomChessArrNum() {
     return Math.floor(Math.random() * chessPieces.length)
 }
 
-let chessPiecesUsed = []
 function generateFirst3pieces() {
      let piecesList = document.getElementById("piecesList")
      let chessPieceDivs = piecesList.querySelectorAll("div")
@@ -31,6 +43,7 @@ function generateFirst3pieces() {
         do {
             chessPieceNum = randomChessArrNum()
         } while(chessPiecesUsed.includes(chessPieceNum))
+
         chessPiecesUsed.push(chessPieceNum)
         chessPieceDiv.appendChild(
             generateChessElement(chessPieces[chessPieceNum])
@@ -57,12 +70,6 @@ function generateRandomPiece() {
     return clone
 }
 
-function selectChessPiece() {
-    let pieces = generateRandomPiece()
-    for (piece of pieces) {
-        const pieceDiv = document.createElement("div")
-    }
-}
 
 function createGameSquare() {
     //TODO: figure if to hard code "gameSquare"
@@ -71,7 +78,6 @@ function createGameSquare() {
     return gameSquare
 }
 
-//function scrollThroughBoard() {
 function initializeBoard() { 
     //TODO: figure out how to prevent it from running early
     let gameRows = gameBoardDiv.getElementsByClassName("gameRow")
@@ -89,6 +95,7 @@ function initializeBoard() {
     }
 }
 initializeBoard()
+
 
 
 const piecesList = document.getElementById("piecesList")
@@ -123,5 +130,36 @@ gameScreen.addEventListener("click", e => {
     selectedPiece.style.width = "60px"
     selectedPiece.style.height = "60px"
     e.target.appendChild(selectedPiece)
-    selectedPiece = null
+    
+    //TODO: remove this comlicated and fragile verfication.
+    //      replace with chess pieces being an obj, and you can
+    //      get them from somewhere else
+    //      (don't know what to input into the array...)
+    let splitStr = 'http://127.0.0.1:5500'
+    let splitedStr = selectedPiece.src.split(splitStr)[1]
+    const chessPieceIndex = chessPieces.indexOf(splitedStr)
+    chessPiecesUsed = chessPiecesUsed.filter(e => {return e != chessPieceIndex})
+    selectedPiece = null 
+
+    //TODO: make seperate function
+    //      probably also put the function (and connection) in seperate script
+    //TODO: figure javascript importing
+    /*
+    let piecesList = document.getElementById("piecesList")
+     let chessPieceDivs = piecesList.querySelectorAll("div")
+     for (chessPieceDiv of chessPieceDivs) {
+        let chessPieceNum = null
+        do {
+            chessPieceNum = randomChessArrNum()
+        } while(chessPiecesUsed.includes(chessPieceNum))
+
+        chessPiecesUsed.push(chessPieceNum)
+        chessPieceDiv.appendChild(
+            generateChessElement(chessPieces[chessPieceNum])
+        )
+     }
+        do {
+        chessPieceNum = randomChessArrNum()
+    } while(chessPiecesUsed.includes(chessPieceNum))
+     */
 })
