@@ -73,10 +73,22 @@ function invertImage() {
 }
 
 const piecesList = document.getElementById("piecesList")
+let selectedPiece = null
 piecesList.addEventListener("click", e => {
-    if (e.target.hasAttribute("style")) {
-        e.target.removeAttribute("style")  
-    } else {
-        e.target.setAttribute("style", "border:var(--gamePieceBorder)")
+    let images = piecesList.querySelectorAll("img")
+    for (image of images) {
+        if (image == e.target) {
+            if (e.target.hasAttribute("style")) {
+                selectedPiece = null
+                e.target.removeAttribute("style")  
+            } else {
+                selectedPiece = e.target
+                e.target.setAttribute(
+                    "style", "border:var(--gamePieceBorder)"
+                )
+            }
+        } else {
+            image.removeAttribute("style")
+        }
     }
 })
