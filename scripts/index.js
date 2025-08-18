@@ -181,6 +181,7 @@ function generateEnemyElement() {
 
     let img = document.createElement("img")
     img.setAttribute("src", cars[randomNum])
+    //TODO: make a seperate class for enemy images
     img.setAttribute("class", "chessPieceImg")
     img.setAttribute("name", "enemy")
 
@@ -194,3 +195,23 @@ function generateEnemy() {
     testSquare.appendChild(generateEnemyElement())
 }
 generateEnemy()
+
+function moveEnemyDown() {
+    //TODO: replace uneeded lets with const
+    let enemies = document.querySelectorAll("img[name='enemy']")
+    console.log(enemies)
+    for (enemy of enemies) {
+        //let row = parseInt(enemy.parentNode.parentNode.id[3])
+        let row = 1
+        let newRowS = `row${row+1}`
+        let newRow = document.getElementById(newRowS)
+        
+        if (newRow != null) {
+            let div = newRow.childNodes[0]
+            div.appendChild(enemy)
+        } else {
+            //TODO: THIS IS WHERE YOU TAKE DAMAGE
+        }        
+    }
+}
+moveEnemyDown()
