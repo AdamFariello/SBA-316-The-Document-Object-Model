@@ -1,4 +1,4 @@
-const chessImgDir = "./images/chess/"
+const chessImgDir = "/images/chess/"
 let chessPieces = [
     {name:"bishop",src: chessImgDir + "bishop.png"},
     {name:"king",src: chessImgDir + "king.png"},
@@ -10,6 +10,13 @@ let chessPieces = [
 ]
 
 let gameBoardDiv = document.getElementById("gameScreen")
+
+function generateChessElement(chessPiece) {
+    let element = document.createElement("img")
+    img.setAttribute("src", chessPiece.src)
+    img.setAttribute("class", "chessPieceImg")
+    return element
+}
 
 let chessPiecesUsed = []
 function generateFirst3pieces() {
