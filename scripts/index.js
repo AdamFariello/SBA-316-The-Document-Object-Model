@@ -115,7 +115,8 @@ piecesList.addEventListener("click", e => {
 
 
 gameScreen.addEventListener("click", e => {
-    if (e.target.id == "gameScreen" || selectedPiece == null) { 
+    if (e.target.id == "gameScreen" || e.target.classList[0] == "gameRow" || 
+        e.target.tagName == "IMG" || selectedPiece == null) { 
         return
     }
 
