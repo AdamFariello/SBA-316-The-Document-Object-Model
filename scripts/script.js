@@ -1,5 +1,5 @@
 let topImg = document.getElementById("topImg")
-function updateOpacity () {
+export function updateOpacity () {
     //topImg.setAttribute("opacity", 0.1)]
     let topImgStyles = window.getComputedStyle(topImg);
     const opacity = topImgStyles.getPropertyValue("opacity")

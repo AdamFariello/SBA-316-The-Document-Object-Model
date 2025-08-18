@@ -1,3 +1,5 @@
+import {updateOpacity} from "/script.js";
+
 const chessImgDir = "/images/chess/"
 /*
 let chessPieces = [
@@ -207,7 +209,7 @@ function moveEnemyDown() {
         let newRowS = `row${row+1}`
         let newRow = document.getElementById(newRowS)
         
-        if (newRow != null) {
+        if (newRow == null) {
             let div = newRow.childNodes[0]
             enemy.classList.add("enemyAnimation")
             
@@ -219,7 +221,12 @@ function moveEnemyDown() {
             }, animationDuration);
         } else {
             //TODO: THIS IS WHERE YOU TAKE DAMAGE
-            document.removeChild(enemy)
+            enemy.setAttribute("src", "images/explosion.gif")
+            setTimeout(e => {
+                enemy.remove()
+                updateOpacity()
+                
+            }, 1000);
         }        
     }
 }
