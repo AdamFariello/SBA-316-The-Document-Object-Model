@@ -74,6 +74,9 @@ function invertImage() {
 
 const piecesList = document.getElementById("piecesList")
 piecesList.addEventListener("click", e => {
-    console.log(e.target)
-    e.target.setAttribute("style", "border:var(--gamePieceBorder)")
+    if (e.target.hasAttribute("style")) {
+        e.target.removeAttribute("style")  
+    } else {
+        e.target.setAttribute("style", "border:var(--gamePieceBorder)")
+    }
 })
