@@ -144,22 +144,18 @@ gameScreen.addEventListener("click", e => {
     //TODO: make seperate function
     //      probably also put the function (and connection) in seperate script
     //TODO: figure javascript importing
-    /*
     let piecesList = document.getElementById("piecesList")
-     let chessPieceDivs = piecesList.querySelectorAll("div")
-     for (chessPieceDiv of chessPieceDivs) {
-        let chessPieceNum = null
-        do {
-            chessPieceNum = randomChessArrNum()
-        } while(chessPiecesUsed.includes(chessPieceNum))
-
-        chessPiecesUsed.push(chessPieceNum)
-        chessPieceDiv.appendChild(
-            generateChessElement(chessPieces[chessPieceNum])
-        )
-     }
-        do {
+    let chessPieceDivs = piecesList.querySelectorAll("div")
+    let noImgDiv = [...chessPieceDivs].filter(e => {
+        return e.childNodes.length == 0
+    })[0]
+    let chessPieceNum = null
+    do {
         chessPieceNum = randomChessArrNum()
     } while(chessPiecesUsed.includes(chessPieceNum))
-     */
+
+    chessPiecesUsed.push(chessPieceNum)
+    noImgDiv.appendChild(
+        generateChessElement(chessPieces[chessPieceNum])
+    )
 })
