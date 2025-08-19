@@ -18,5 +18,5 @@ btn.addEventListener("click", e => {
     }
 
     let style = radioBtn.value
-    window.location.href=address + "?" + style 
+    window.location.href=address + "?" + style + "&" + username.value
 })

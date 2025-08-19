@@ -50,8 +50,11 @@ initializeBoard()
 
 
 function chooseCSS() {
-    const url = window.location.href
-    const param = url.split("?")[1]
+    let url = window.location.href
+    url = url.split("?")[1]
+    let param = url.split("&")[0]
+    document.title = url.split("&")[1] + " presents: " + document.title
+    
 
     //TODO: use variables instead (running out of time lol)
     let style = document.createElement("style")
