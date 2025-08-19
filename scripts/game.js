@@ -203,13 +203,14 @@ function moveEnemyDown() {
     let enemies = document.querySelectorAll("img[name='enemy']")
     console.log(enemies)
     for (let enemy of enemies) {
+        enemy.parentNode.parentNode
         let row = parseInt(enemy.parentNode.parentNode.id[3])
-        //let row = 1
         let newRowS = `row${row+1}`
         let newRow = document.getElementById(newRowS)
         
         if (newRow != null) {
-            let div = newRow.childNodes[0]
+            let col = parseInt(enemy.parentNode.getAttribute("column")) 
+            let div = newRow.childNodes[col]
             enemy.classList.add("enemyAnimation")
             
             //duration shorter to avoid animation ending early
