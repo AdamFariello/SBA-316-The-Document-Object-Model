@@ -46,6 +46,28 @@ function initializeBoard() {
 initializeBoard()
 
 
+function chooseCSS() {
+    const url = window.location.href
+    const param = url.split("?")[1]
+
+    let style = document.createElement("style")
+    if (param == "dorfic") {
+        style.innerHTML = `
+        #gameScreen {
+            background-color: black;
+        }
+        `
+    } else if (param == hexatron) {
+        //TODO
+    } else {
+        return
+    }
+    
+    document.getElementsByTagName("head")[0]
+            .appendChild(style)
+}
+chooseCSS()
+
 
 //rest
 function generateChessElement(chessPiece) {
@@ -202,7 +224,7 @@ moveEnemyDown()
 
 
 function setStyle() {
-
+    
 }
 setStyle()
 

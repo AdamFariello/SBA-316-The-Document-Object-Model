@@ -1,6 +1,9 @@
+const address = "game.html"
+
 let btn = document.getElementById("button")
 let username = document.getElementById("username")
 let radioBtns = document.querySelectorAll("input[name='radioButton']")
+
 btn.addEventListener("click", e => {
     if (username.value.length < 1) {
         window.alert("ENTER USERNAME")
@@ -15,4 +18,5 @@ btn.addEventListener("click", e => {
     }
 
     let style = radioBtn.value
+    window.location.href=address + "?" + style 
 })
