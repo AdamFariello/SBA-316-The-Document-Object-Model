@@ -1,23 +1,7 @@
 import { updateOpacity } from "./script.js";
 import { chessPieces, chessPiecesUsed, cars } from "./global.js";
 
-
-
-
-
-let gameBoardDiv = document.getElementById("gameScreen")
-
-function generateChessElement(chessPiece) {
-    let img = document.createElement("img")
-    img.setAttribute("src", chessPiece)
-    img.setAttribute("class", "chessPieceImg")
-    return img
-}
-
-function randomChessArrNum() {
-    return Math.floor(Math.random() * chessPieces.length)
-}
-
+//init
 function generateFirst3pieces() {
      let piecesList = document.getElementById("piecesList")
      let chessPieceDivs = piecesList.querySelectorAll("div")
@@ -36,7 +20,44 @@ function generateFirst3pieces() {
 generateFirst3pieces()
 
 
+function createGameSquare() {
+    //TODO: figure if to hard code "gameSquare"
+    let gameSquare = document.createElement("div")
+    gameSquare.setAttribute("class", "gameSquare")
+    return gameSquare
+}
+function initializeBoard() { 
+    //TODO: figure out how to prevent it from running early
+    let gameBoardDiv = document.getElementById("gameScreen")
+    let gameRows = gameBoardDiv.getElementsByClassName("gameRow")
+    for (let gameRow of gameRows) {
+        let gameSquareArr = gameRow.getElementsByClassName("gameSquare")
+        
+        if (gameSquareArr.length < 6) {
+            let gameSquare = createGameSquare()
+            while (gameSquareArr.length < 5) {
+                let clone = gameSquare.cloneNode(false) //false = no children
+                gameRow.appendChild(clone)
+            }
+            gameRow.appendChild(gameSquare)
+        }
+    }
+}
+initializeBoard()
 
+
+
+//rest
+function generateChessElement(chessPiece) {
+    let img = document.createElement("img")
+    img.setAttribute("src", chessPiece)
+    img.setAttribute("class", "chessPieceImg")
+    return img
+}
+
+function randomChessArrNum() {
+    return Math.floor(Math.random() * chessPieces.length)
+}
 
 
 function generateRandomPiece() { 
@@ -53,31 +74,6 @@ function generateRandomPiece() {
     return clone
 }
 
-
-function createGameSquare() {
-    //TODO: figure if to hard code "gameSquare"
-    let gameSquare = document.createElement("div")
-    gameSquare.setAttribute("class", "gameSquare")
-    return gameSquare
-}
-
-function initializeBoard() { 
-    //TODO: figure out how to prevent it from running early
-    let gameRows = gameBoardDiv.getElementsByClassName("gameRow")
-    for (let gameRow of gameRows) {
-        let gameSquareArr = gameRow.getElementsByClassName("gameSquare")
-        
-        if (gameSquareArr.length < 6) {
-            let gameSquare = createGameSquare()
-            while (gameSquareArr.length < 5) {
-                let clone = gameSquare.cloneNode(false) //false = no children
-                gameRow.appendChild(clone)
-            }
-            gameRow.appendChild(gameSquare)
-        }
-    }
-}
-initializeBoard()
 
 
 
