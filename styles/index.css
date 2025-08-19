@@ -11,7 +11,7 @@
 }
 
 #enterUsername {
-    width:20%;
+    width:30%;
     height:auto;
     display:flex;
     flex-direction: column;
@@ -19,6 +19,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
+    text-align: center;
 }
 #enterUsername p {
     margin-bottom: 5px;
