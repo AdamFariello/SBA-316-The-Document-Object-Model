@@ -235,15 +235,18 @@ function moveEnemyDown() {
 function gameLoop() {
     let row1 = document.getElementById("row1")
     
-    //Step 1: scroll through row 1
+    //Step 1: scroll through row 1 to spawn new enemies
     let gameSquares = row1.children
-    console.log(gameSquares)
     for (let gameSquare of gameSquares) {
-        let spawnEnemy = Math.round(Math.random())
-        if (spawnEnemy == 0) {
+        const spawnEnemy = Math.round(Math.random())
+        const isOccupied = gameSquare.children.length 
+        if (spawnEnemy == 0 && isOccupied == 0) {
             generateEnemy(gameSquare)
         }
     }
+
+    //Step 2: scoll the enemies down
+    //moveEnemyDown()
 }
 //window.setInterval(gameLoop(), 2000)
 gameLoop()
