@@ -4,39 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>It's Just Like That</title>
-
     <link rel="stylesheet" href="/styles/background.css">
-    <link rel="stylesheet" href="/styles/gameScreen.css">
     <link rel="stylesheet" href="/styles/index.css">
-    <link rel="stylesheet" href="/styles/animation.css">
 </head>
 <body>
-    <div class="hbox"> 
-        <div id="gameScreen"> 
-            <div id="row1" class="gameRow"></div>
-            <div id="row2" class="gameRow"></div>
-            <div id="row3" class="gameRow"></div>
-            <hr width="100%" size="4" color="black">
-            <hr>
-            <div id="row4" class="gameRow"></div>
-            <div id="row5" class="gameRow"></div>
-            <div id="row6" class="gameRow"></div>
+    <div id="main">
+        <div id="enterUsername">
+            <p>Enter your name</p>
+            <input type="text" id="username">
         </div>
 
-
-        <div id="piecesList">
-            <div class="chessPieceDiv"></div>
-            <div class="chessPieceDiv"></div>
-            <div class="chessPieceDiv"></div>
+        <div id="enterStyle"> 
+            <p>Choose a style for your game</p>
+            <div class="radioOption">
+                <input type="radio" name="radioButton" value="dorfic" id="l">
+                <label for="l">dorfic</label>
+            </div>
+            <div class="radioOption">
+                <input type="radio" name="radioButton" value="hexatron" id="2">
+                <label for="2">hexatron</label>
+            </div>
         </div>
-    </div> 
+
+        <div id="buttonDiv">
+            <button>submit</button>
+        </div>
+    </div>
 
     <div> <!-- MAKE SURE TO INCLUDE .background.css-->
         <div id="btmImg" class="backgroundImgs"></div>
         <div id="topImg" class="backgroundImgs"></div>
     </div>
-    <!--TODO: change src of index.js with final decision-->
-    <script type="module" src="/scripts/index.js"></script> 
-    <script type="module" src="/scripts/script.js"></script>
 </body>
-</html>     
+</html>

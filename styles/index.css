@@ -1,10 +1,56 @@
-.hbox {
-    width: auto;
-    height: auto;
+#main {
+    width: 50%;
+    height: 70%;
+    background: aliceblue;
+    display:flex;
+    margin-left: auto;
+    margin-right:auto;
+    justify-content: center;
+    flex-direction: column;
+    margin-top:10%
+}
+
+#enterUsername {
+    width:20%;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+#enterUsername p {
+    margin-bottom: 5px;
+}
+
+#enterStyle {
+    width:auto;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#enterStyle p {
+    margin-bottom: 5px;
+}
+
+.radioOption {
+    width:auto;
+    height:auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
     display:flex;
     justify-content: center;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding-top: 5%;
-    padding-bottom: 5%;
+}
+
+
+#buttonDiv {
+    width:auto;
+    height: auto;
+    margin-left: auto;
+    margin-right:auto;
 }
