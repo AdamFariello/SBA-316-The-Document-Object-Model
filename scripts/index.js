@@ -1,36 +1,8 @@
-import {updateOpacity} from "/script.js";
-
-const chessImgDir = "/images/chess/"
-/*
-let chessPieces = [
-    {name:"bishop",src: chessImgDir + "bishop.png"},
-    {name:"king",src: chessImgDir + "king.png"},
-    {name:"knight",src: chessImgDir + "knight.png"},
-    {name:"pawn",src: chessImgDir + "pawn.png"},
-    {name:"queen",src: chessImgDir + "queen.png"},
-    {name:"rook",src: chessImgDir + "rook.png"},
-]
-*/
-let chessPieces = [
-    chessImgDir + "bishop.png",
-    chessImgDir + "king.png",
-    chessImgDir + "knight.png",
-    chessImgDir + "pawn.png",
-    chessImgDir + "queen.png",
-    chessImgDir + "rook.png",
-]
-let chessPiecesUsed = []
+import { updateOpacity } from "./script.js";
+import { chessPieces, chessPiecesUsed, cars } from "./global.js";
 
 
-//TODO: figure out how to just san the images in file instead 
-const carsImgDir = "/images/cars/"
-let cars = [
-    carsImgDir + "boat.png",
-    carsImgDir + "car.png", 
-    carsImgDir + "helicopter.png",
-    carsImgDir + "jeep.png",
-    carsImgDir + "tank.png"
-]
+
 
 
 let gameBoardDiv = document.getElementById("gameScreen")
@@ -49,7 +21,7 @@ function randomChessArrNum() {
 function generateFirst3pieces() {
      let piecesList = document.getElementById("piecesList")
      let chessPieceDivs = piecesList.querySelectorAll("div")
-     for (chessPieceDiv of chessPieceDivs) {
+     for (let chessPieceDiv of chessPieceDivs) {
         let chessPieceNum = null
         do {
             chessPieceNum = randomChessArrNum()
@@ -92,7 +64,7 @@ function createGameSquare() {
 function initializeBoard() { 
     //TODO: figure out how to prevent it from running early
     let gameRows = gameBoardDiv.getElementsByClassName("gameRow")
-    for (gameRow of gameRows) {
+    for (let gameRow of gameRows) {
         let gameSquareArr = gameRow.getElementsByClassName("gameSquare")
         
         if (gameSquareArr.length < 6) {
@@ -203,13 +175,13 @@ function moveEnemyDown() {
     //TODO: replace uneeded lets with const
     let enemies = document.querySelectorAll("img[name='enemy']")
     console.log(enemies)
-    for (enemy of enemies) {
+    for (let enemy of enemies) {
         //let row = parseInt(enemy.parentNode.parentNode.id[3])
         let row = 1
         let newRowS = `row${row+1}`
         let newRow = document.getElementById(newRowS)
         
-        if (newRow == null) {
+        if (newRow != null) {
             let div = newRow.childNodes[0]
             enemy.classList.add("enemyAnimation")
             
