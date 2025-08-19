@@ -50,15 +50,20 @@ function chooseCSS() {
     const url = window.location.href
     const param = url.split("?")[1]
 
+    //TODO: use variables instead (running out of time lol)
     let style = document.createElement("style")
     if (param == "dorfic") {
         style.innerHTML = `
-        #gameScreen {
-            background-color: black;
-        }
+        #gameScreen {background-color: #2ec4b6;} 
+        .gameSquare {background-color: #ffdd00;}
+        #piecesList {background-color: #2ec4b6;}
         `
-    } else if (param == hexatron) {
-        //TODO
+    } else if (param == "hexatron") {
+        style.innerHTML = `
+        #gameScreen {background-color: #81171b;} 
+        .gameSquare {background-color: #d6c6aa;}
+        #piecesList {background-color: #4ea8de;}
+        `
     } else {
         return
     }
