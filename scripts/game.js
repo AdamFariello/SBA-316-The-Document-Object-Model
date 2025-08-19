@@ -74,6 +74,9 @@ function chooseCSS() {
 chooseCSS()
 
 
+
+
+
 //rest
 function generateChessElement(chessPiece) {
     let img = document.createElement("img")
@@ -189,7 +192,13 @@ function generateEnemy() {
     let testSquare = row1.childNodes[0]
     //testSquare.innerText = "example"
     //console.log(testSquare)
-    testSquare.appendChild(generateEnemyElement())
+    let enemy = generateEnemyElement()
+    const oldImg = enemy.src
+    enemy.setAttribute("src", "/images/sparkles.gif")
+    testSquare.appendChild(enemy)
+    setTimeout(e => {
+        enemy.setAttribute("src", oldImg)
+    }, 2000);
 }
 generateEnemy()
 
@@ -216,7 +225,7 @@ function moveEnemyDown() {
             }, animationDuration);
         } else {
             //TODO: THIS IS WHERE YOU TAKE DAMAGE
-            enemy.setAttribute("src", "images/explosion.gif")
+            enemy.setAttribute("src", "/images/explosion.gif")
             setTimeout(e => {
                 enemy.remove()
                 updateOpacity()
@@ -225,13 +234,8 @@ function moveEnemyDown() {
         }        
     }
 }
-moveEnemyDown()
+//moveEnemyDown()
 
-
-function setStyle() {
-    
-}
-setStyle()
 
 function gameLoop() {
 
