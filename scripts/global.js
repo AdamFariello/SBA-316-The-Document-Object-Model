@@ -7,7 +7,6 @@ export let chessPieces = [
     chessImgDir + "queen.png",
     chessImgDir + "rook.png",
 ]
-export let chessPiecesUsed = []
 
 //TODO: figure out how to just san the images in file instead 
 const carsImgDir = "/images/cars/"

@@ -1,5 +1,8 @@
 import { updateOpacity } from "./script.js";
-import { chessPieces, chessPiecesUsed, cars } from "./global.js";
+import { chessPieces, cars } from "./global.js";
+let chessPiecesUsed = [] //TODO: highlight in obsidian that this was 
+                        //       treated as a constant
+
 
 //init
 function generateFirst3pieces() {
@@ -90,21 +93,6 @@ function randomChessArrNum() {
 }
 
 
-function generateRandomPiece() { 
-    let clone = JSON.parse(JSON.stringify(chessPieces));
-    
-    while (clone.length > 3) {
-        const index = Math.floor(Math.random() * clone.length)
-        const toRemove = chessPieces[index].name
-        clone = clone.filter(function(e) {
-            return e.name != toRemove
-        })
-    }
-
-    return clone
-}
-
-
 
 
 const piecesList = document.getElementById("piecesList")
@@ -112,7 +100,7 @@ let selectedPiece = null
 piecesList.addEventListener("click", e => {
     //TODO: figure out if swapping div with img is good idea
     let images = piecesList.querySelectorAll("img")
-    for (image of images) {
+    for (let image of images) {
         if (image == e.target) {
             if (e.target.hasAttribute("style")) {
                 selectedPiece = null
@@ -152,7 +140,7 @@ gameScreen.addEventListener("click", e => {
     //      (don't know what to input into the array...)
     let splitStr = 'http://127.0.0.1:5500'
     let splitedStr = selectedPiece.src.split(splitStr)[1]
-    const chessPieceIndex = chessPieces.indexOf(splitedStr)
+    let chessPieceIndex = chessPieces.indexOf(splitedStr)
     chessPiecesUsed = chessPiecesUsed.filter(e => {return e != chessPieceIndex})
     selectedPiece = null 
 
@@ -201,7 +189,6 @@ function generateEnemy(gameSquare) {
 function moveEnemyDown() {
     //TODO: replace uneeded lets with const
     let enemies = document.querySelectorAll("img[name='enemy']")
-    console.log(enemies)
     for (let enemy of enemies) {
         enemy.parentNode.parentNode
         let row = parseInt(enemy.parentNode.parentNode.id[3])
@@ -211,26 +198,45 @@ function moveEnemyDown() {
         if (newRow != null) {
             let col = parseInt(enemy.parentNode.getAttribute("column")) 
             let div = newRow.childNodes[col]
-            enemy.classList.add("enemyAnimation")
             
-            //duration shorter to avoid animation ending early
-            var animationDuration = 3000; 
-            setTimeout(e => {
-                enemy.classList.remove("enemyAnimation")
-                div.appendChild(enemy)
-            }, animationDuration);
+            if (div.childNodes.length == 0) { 
+                enemy.classList.add("enemyAnimation")
+                //duration shorter to avoid animation ending early
+                var animationDuration = 3000; 
+                setTimeout(e => {
+                    enemy.classList.remove("enemyAnimation")
+                    div.appendChild(enemy)
+                }, animationDuration);
+            } else {
+                //enemy destroyed
+                div.childNodes[0].remove()
+                enemy.setAttribute("delete", "true")
+            }
         } else {
-            //TODO: THIS IS WHERE YOU TAKE DAMAGE
+            //THIS IS WHERE YOU TAKE DAMAGE
             enemy.setAttribute("src", "/images/explosion.gif")
             setTimeout(e => {
                 enemy.remove()
                 updateOpacity()
-                
             }, 1000);
         }        
     }
-}
 
+    //TODO: remove elements to simulate elements getting cleared
+    let toBeDeleted = document.querySelectorAll("img[delete]")
+    /*
+    if (toBeDeleted.length > 0) {
+        console.log(toBeDeleted)
+        toBeDeleted[0].innerHTML = ""
+        console.log(toBeDeleted)
+        //while (toBeDeleted.length > 0) {
+        //    toBeDeleted[0].remove()
+        //}
+    }
+    */
+
+
+}
 
 function gameLoop() {
     let row1 = document.getElementById("row1")
@@ -243,13 +249,23 @@ function gameLoop() {
     //Step 2: scroll through row 1 to spawn new enemies
     let gameSquares = row1.children
     for (let gameSquare of gameSquares) {
-        const spawnEnemy = Math.round(Math.random())
-        const isOccupied = gameSquare.children.length 
+        let spawnEnemy = Math.round(Math.random())
+        let isOccupied = gameSquare.children.length 
         if (spawnEnemy == 0 && isOccupied == 0) {
             generateEnemy(gameSquare)
         }
     }
 }
 //window.setInterval(gameLoop(), 2000)
+
+//TODO: REMOVE
+/*
+let row2 = document.getElementById("row2")
+let gameSquares = row2.children
+for (let gameSquare of gameSquares) {
+    let chess = generateChessElement(chessPieces[0])
+    gameSquare.appendChild(chess)
+}
+*/
 gameLoop()
 gameLoop()
