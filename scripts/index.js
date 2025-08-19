@@ -199,3 +199,13 @@ function moveEnemyDown() {
     }
 }
 moveEnemyDown()
+
+
+function setStyle() {
+
+}
+setStyle()
+
+function gameLoop() {
+
+}
