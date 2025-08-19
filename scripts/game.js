@@ -187,20 +187,15 @@ function generateEnemyElement() {
 
     return img
 }
-function generateEnemy() {
-    let row1 = document.getElementById("row1")
-    let testSquare = row1.childNodes[0]
-    //testSquare.innerText = "example"
-    //console.log(testSquare)
+function generateEnemy(gameSquare) {
     let enemy = generateEnemyElement()
     const oldImg = enemy.src
     enemy.setAttribute("src", "/images/sparkles.gif")
-    testSquare.appendChild(enemy)
+    gameSquare.appendChild(enemy)
     setTimeout(e => {
         enemy.setAttribute("src", oldImg)
     }, 2000);
 }
-generateEnemy()
 
 
 function moveEnemyDown() {
@@ -238,5 +233,17 @@ function moveEnemyDown() {
 
 
 function gameLoop() {
-
+    let row1 = document.getElementById("row1")
+    
+    //Step 1: scroll through row 1
+    let gameSquares = row1.children
+    console.log(gameSquares)
+    for (let gameSquare of gameSquares) {
+        let spawnEnemy = Math.round(Math.random())
+        if (spawnEnemy == 0) {
+            generateEnemy(gameSquare)
+        }
+    }
 }
+//window.setInterval(gameLoop(), 2000)
+gameLoop()
