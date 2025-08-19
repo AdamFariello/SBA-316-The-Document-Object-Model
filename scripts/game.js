@@ -33,14 +33,14 @@ function initializeBoard() {
     for (let gameRow of gameRows) {
         let gameSquareArr = gameRow.getElementsByClassName("gameSquare")
         
-        if (gameSquareArr.length < 6) {
-            let gameSquare = createGameSquare()
-            while (gameSquareArr.length < 5) {
-                let clone = gameSquare.cloneNode(false) //false = no children
-                gameRow.appendChild(clone)
-            }
-            gameRow.appendChild(gameSquare)
+        let gameSquare = createGameSquare()
+        for (let i = 0; i < 5; i++) {
+            let clone = gameSquare.cloneNode(false) //false = no children
+            clone.setAttribute("column", i)
+            gameRow.appendChild(clone)
         }
+        gameSquare.setAttribute("column", 5)
+        gameRow.appendChild(gameSquare)
     }
 }
 initializeBoard()
@@ -203,8 +203,8 @@ function moveEnemyDown() {
     let enemies = document.querySelectorAll("img[name='enemy']")
     console.log(enemies)
     for (let enemy of enemies) {
-        //let row = parseInt(enemy.parentNode.parentNode.id[3])
-        let row = 1
+        let row = parseInt(enemy.parentNode.parentNode.id[3])
+        //let row = 1
         let newRowS = `row${row+1}`
         let newRow = document.getElementById(newRowS)
         
@@ -229,13 +229,17 @@ function moveEnemyDown() {
         }        
     }
 }
-//moveEnemyDown()
 
 
 function gameLoop() {
     let row1 = document.getElementById("row1")
     
-    //Step 1: scroll through row 1 to spawn new enemies
+    //Step 0: check if game lost or won
+
+    //Step 1: Move already existing enemies down
+    moveEnemyDown()
+
+    //Step 2: scroll through row 1 to spawn new enemies
     let gameSquares = row1.children
     for (let gameSquare of gameSquares) {
         const spawnEnemy = Math.round(Math.random())
@@ -244,9 +248,7 @@ function gameLoop() {
             generateEnemy(gameSquare)
         }
     }
-
-    //Step 2: scoll the enemies down
-    //moveEnemyDown()
 }
 //window.setInterval(gameLoop(), 2000)
+gameLoop()
 gameLoop()
